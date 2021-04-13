@@ -1,0 +1,27 @@
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.navigationBar {
+	overflow: hidden;
+	background-color: #333;
+}
+
+.navigationBar a {
+	float: left;
+	color: white;
+	text-align: center;
+	padding: 14px 14px;
+	font-size: 17px;
+}
+
+.navigationBar a:hover {
+	background-color: white;
+	color: black;
+}
+
+.navigationBar a:active {
+	background-color: navy;
+	color: white;
+}

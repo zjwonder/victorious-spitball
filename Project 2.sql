@@ -18,10 +18,10 @@ CREATE TABLE IF NOT EXISTS Advertisements
  Category_ID varchar(3) not null,
  Status_ID varchar(2) not null,
  constraint pk_advert primary key (Advertisement_ID),
- constraint fk_user_id foreign key (User_ID) references Users(User_ID),
- constraint fk_moderator_id foreign key (Moderator_ID) references Moderators(User_ID),
- constraint fk_category_id foreign key (Category_ID) references Categories(Category_ID),
- constraint fk_status_id foreign key (Status_ID) references Statuses(Status_ID)
+ constraint fk_user_id foreign key (User_ID) references Users(User_ID) ON DELETE RESTRICT,
+ constraint fk_moderator_id foreign key (Moderator_ID) references Moderators(User_ID) ON DELETE SET NULL,
+ constraint fk_category_id foreign key (Category_ID) references Categories(Category_ID) ON DELETE RESTRICT,
+ constraint fk_status_id foreign key (Status_ID) references Statuses(Status_ID) ON DELETE RESTRICT
  );
  
 CREATE TABLE IF NOT EXISTS Categories
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS Categories
  
  CREATE TABLE IF NOT EXISTS Moderators
  (User_ID varchar(15) not null,
- constraint fk_user_id foreign key (User_ID) references Users(User_ID),
+ constraint fk_user_id foreign key (User_ID) references Users(User_ID) ON DELETE RESTRICT,
  constraint pk_mod_id primary key (User_ID) 
  );
  

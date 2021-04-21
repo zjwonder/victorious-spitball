@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS Categories
  
  CREATE TABLE IF NOT EXISTS Users
  (User_ID varchar(15) not null,
+ password VARCHAR(255) NOT NULL,
  UserFirst varchar(15) not null,
  UserLast varchar(15) not null,
  constraint pk_user_id primary key (User_ID)

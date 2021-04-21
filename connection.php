@@ -1,7 +1,7 @@
 <?php
 
 	$db_hostname = "localhost";
-	$db_database = "cs371spring2021";
+	$db_database = "noProject2";
 	$db_username = "root";
 	$db_password = "";
 	
@@ -9,6 +9,6 @@
 		// saves database connection to $connection
 		
 	if (!$connection)
-		die("Unable to connect to MySQL: " . mysqli_error($connection));
+		die("Connection error: " . mysqli_error($connection));
 
 ?>

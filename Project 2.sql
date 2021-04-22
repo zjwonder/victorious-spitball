@@ -57,9 +57,12 @@ CREATE TABLE IF NOT EXISTS Categories
  insert into Statuses (Status_ID, StatusName)
  values ('PN','Pending'),('AC','Active'),('DI','Disapproved');
  
- insert into Users (User_ID, UserFirst, UserLast)
- values ('Jsmith','John','Smith'),('Ajackson','Ann','Jackson'),('Rkale','Rania','Kale'),('Sali','Samir','Ali');
- 
+ insert into Users (User_ID, UserFirst, UserLast, password)
+ values ('Jsmith','John','Smith', '$2y$10$O9AbWdnOOpeAFvGNFvULN.4.iK19JlWsxnaW2PypFcjSExmKaBKSm'),
+        ('Ajackson','Ann','Jackson','$2y$10$TEI4jR4NBuqpwZsEYcvHH.5W58sU.po/ardZRnm3jcsDIW3w6jr3a'),
+        ('Rkale','Rania','Kale','$2y$10$TEI4jR4NBuqpwZsEYcvHH.5W58sU.po/ardZRnm3jcsDIW3w6jr3a'),
+        ('Sali','Samir','Ali','$2y$10$O9AbWdnOOpeAFvGNFvULN.4.iK19JlWsxnaW2PypFcjSExmKaBKSm');
+
  insert into Moderators(User_ID)
  values ('Jsmith'),('Ajackson');
  

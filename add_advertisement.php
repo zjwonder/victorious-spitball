@@ -1,3 +1,6 @@
+<!-- script reference: https://github.com/alexasummers/CS371Demos/blob/main/add_employee.php
+-->
+
 <?php
 require_once 'connection.php'
 
@@ -5,7 +8,7 @@ $AdvTitle=isset($_POST['AdvTitle'])?$_POST['AdvTitle']:"";
 $AdvDetails=isset($_POST['AdvDetails'])?$_POST['AdvDetails']:"";
 $AdvDate=date("Y-m-d");
 $AdvPrice=isset($_POST['AdvPrice'])?$_POST['AdvPrice']:"";
-$User_ID=; // needs to reference the logged in user somehow
+$User_ID=$_SESSION["User_ID"];
 // mod ID added when it is reviewed by logged in moderator
 $Category_ID=isset($_POST['Category_ID'])?$_POST['Category_ID']:"";
 $Status_ID='PN';

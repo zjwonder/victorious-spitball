@@ -32,14 +32,20 @@ if($_SERVER['REQUEST_METHOD]'] == 'POST')
     }
 
     // Password validation
-    if(empty(trim($_POST['password']))) { $password_err = "Password is a required field." }
-    elseif(!(preg_match('/[A-Za-z]/', trim($_POST['password'])) && )) { $password_err = "Password must be at least 7 characters" }
-
+    if(empty(trim($_POST['password']))) 
+    { $password_err = "Password is a required field." }
+    elseif(!(preg_match('/[A-Za-z]/', trim($_POST['password'])) && )) 
+    { $password_err = "Password must be at least 7 characters" }
+    else { $password = trim($_POST['password']) }
 
     // Confirm password validation
-    if(empty(trim($_POST['confirm_password'])))
+    if(empty(trim($_POST['confirm_password']))) 
+    { $confirm_password_err = "Confirm password is a required field" }
+    else 
     {
-        $confirm_password_err = "Confirm password is a required field."
+        $confirm_password = trim($_POST['confirm_password'])
+        if (empty($password_err) && ($password != $confirm_password)) 
+        { $confirm_password_err = "Password confirmation does not match" }
     }
 }
 ?>

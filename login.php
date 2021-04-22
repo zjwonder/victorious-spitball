@@ -2,17 +2,24 @@
 	 hash values from: https://www.onlinewebtoolkit.com/hash-generator -->
 
 <?php
-
+	// start user session
+	session_start();
+	// Check if the user is already logged in. If yes, then redirect them to new_advertisement.php
 	// Check if the user is already logged in. If yes, then redirect them to new_advertisement.php
 	if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === TRUE) {
-		if ($_SESSION["user_is_mod"] == FALSE) { header("location: login_home.php"); }
-		else { header("location: mod_home.php"); }
-		exit;
+		if ($_SESSION["user_is_mod"] == FALSE) { 
+			header("location: login_home.php"); 
+			exit;
+		}
+		else { 
+			header("location: mod_home.php");
+			exit; 
+		}
 	}
 	 
 	// Include config file
 	require_once "connection.php";
-	 
+
 	// Define variables and initialize with empty values
 	$User_ID = "";
 	$password = "";
@@ -57,9 +64,6 @@
 						mySQLi_stmt_bind_result($stmt, $User_ID, $hashed_password);
 						if (mySQLi_stmt_fetch($stmt)) {
 							if (password_verify($password, $hashed_password)) {
-								// Password is correct, so start a new session
-								session_start();
-								
 								// Store data in session variables
 								$_SESSION["loggedin"] = TRUE;
 								$_SESSION["User_ID"] = $User_ID;
@@ -74,7 +78,7 @@
 									if (mySQLi_stmt_execute($mod_stmt)) { 
 										mySQLi_stmt_store_result($mod_stmt);
 										// Check if user is also a mod, update session as appropriate
-										if (mySQLi_stmt_num_rows($mod_stmt) == 1) { 
+										if (mySQLi_stmt_fetch($mod_stmt) === 1) { 
 											$_SESSION["user_is_mod"] = TRUE; 
 											// Redirect user to welcome page
 											header("location: mod_home.php");

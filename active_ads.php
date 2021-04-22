@@ -1,5 +1,7 @@
 <?php
 	
+	session_start();
+	
 	require_once('connection.php');
 		// must include connection file
 	

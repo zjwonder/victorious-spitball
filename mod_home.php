@@ -1,14 +1,13 @@
+<!-- Homepage for logged in moderators -->
+
 <?php
-    if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === TRUE)) {
-        echo "you're not logged in? sesh probs"
-		// header("location: home.html");
-        // exit;
-    }
-    elseif (!$_SESSION["user_is_mod"]) { 
-        echo "shit's broke";
-		// header("location: login_home.php"); 
-        // exit;
-    }
+	session_start();
+	
+	// Check if the user has mod powers. If no, then redirect them to login home
+	if (!(isset($_SESSION["user_is_mod"]) && $_SESSION["user_is_mod"] === TRUE)) { 
+		header("location: login_home.php"); 
+		exit;
+	}
 ?>
 
 <html>
@@ -26,7 +25,7 @@
 			<a href="logout.php">Logout</a>
 		</div>
 		<div style = "padding-left: 16px">
-			<h2>Welcome to the Advertisements Manager Database!</h2>
+			<h2>Welcome to your moderator homepage!</h2>
 			<h4>Use the navigation bar above to access various pages.</h4>
 			<h4><u>Home</u> will take you... Home!</h4>
 			<h4><u>Create Ad</u> will take you to a login page so that you can create an ad!</h4>

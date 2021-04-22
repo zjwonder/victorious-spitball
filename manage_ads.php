@@ -1,14 +1,47 @@
+<!-- For changing ad status or deleting ads -->
+
 <?php
-    if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === TRUE) {
-        header("location: home.html");
-        exit;
-    }
-    elseif (!$_SESSION["user_is_mod"]) { 
-        header("location: login_home.php"); 
-        exit;
+	session_start();
+	
+	// Check if the user has mod powers. If no, then redirect them to login home
+	if (!(isset($_SESSION["user_is_mod"]) && $_SESSION["user_is_mod"] === TRUE)) { 
+		header("location: login_home.php"); 
+		exit;
+	}
+
+    require_once('connection.php');
+    // must include connection file
+
+    $connection = mysqli_connect($db_hostname, $db_username, $db_password, $db_database);
+        // saves database connection to $connection
+        
+    if (!$connection)
+        die("Unable to connect to MySQL: " . mysqli_error($connection));
+
+    $query = "SELECT * FROM Employees";
+    $result = mysqli_query($connection, $query);
+            // saves db records to $result
+
+    if (!$result)
+        die("Database query failed: " . mysqli_error($connection));
+        
+    $html = "";
+        // empty string to store everything
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        // iterates through result set database rows
+        
+        $html.="Employee ID: " . $row['Employee_id'] . "<br>";
+        $html.="Name: " . $row['EmpFirst_Name'] . " " . $row['EmpLast_Name'] . "<br>";
+        $html.="Start Date: " . $row['EmpStart_date'] . "<br>";
+        $html.="End Date: " . $row['EmpEnd_date'] . "<br>";
+        $html.="Supervisor ID : " . $row['EmpSupervisor_ID'] . "<br>";
+        $html.="Department ID : " . $row['Department_ID'] . "<br>";
+        $html.="Branch ID : " . $row['Branch_ID'] . "<br>";
+        $html.="<br><br>";
+        // updates $html string with fields from database
     }
 
-    require_once "connection.php";
-
-    // need to get ads from database and have options to delete or change the status of each one
+    mysqli_close($connection);
+    // closes database connection
 ?>

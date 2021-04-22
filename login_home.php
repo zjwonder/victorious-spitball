@@ -1,5 +1,9 @@
+<!-- Homepage for logged in users -->
+
 <?php
-    if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === FALSE) {
+    session_start();
+	
+	if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === FALSE) {
         header("location: home.html");
         exit;
     }

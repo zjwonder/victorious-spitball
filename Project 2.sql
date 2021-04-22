@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS Categories
  values ('PN','Pending'),('AC','Active'),('DI','Disapproved');
  
  insert into Users (User_ID, UserFirst, UserLast)
- values ('jSmith','John','Smith'),('Ajackson','Ann','Jackson'),('Rkale','Rania','Kale'),('Sali','Samir','Ali');
+ values ('Jsmith','John','Smith'),('Ajackson','Ann','Jackson'),('Rkale','Rania','Kale'),('Sali','Samir','Ali');
  
  insert into Moderators(User_ID)
  values ('Jsmith'),('Ajackson');

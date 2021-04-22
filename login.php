@@ -1,4 +1,4 @@
-<!-- User_ID code from: https://www.tutorialrepublic.com/php-tutorial/php-mySQL-User_ID-system.php 
+<!-- Login code from: https://www.tutorialrepublic.com/php-tutorial/php-mysql-login-system.php 
 	 hash values from: https://www.onlinewebtoolkit.com/hash-generator -->
 
 <?php
@@ -31,12 +31,8 @@
 		}
 		
 		// Check if password is empty
-		if (empty(trim($_POST["password"]))) {
-			$password_err = "Please enter your password.";
-		} 
-		else {
-			$password = trim($_POST["password"]);
-		}
+		if (empty(trim($_POST["password"]))) { $password_err = "Please enter your password."; } 
+		else { $password = trim($_POST["password"]); }
 		
 		// Validate credentials
 		if (empty($User_ID_err) && empty($password_err)) {
@@ -89,6 +85,7 @@
 										}
 									}
 									mySQLi_stmt_close($mod_stmt);
+								}
 							} 
 							else {
 								// Display an error message if password is not valid
@@ -100,7 +97,7 @@
 						// Display an error message if User_ID doesn't exist
 						$User_ID_err = "No account found with that User_ID.";
 					}
-				} 
+				}
 				else {
 					echo "Oops! Something went wrong. Please try again later.";
 				}
@@ -113,36 +110,41 @@
 	}
 ?>
  
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User_ID</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
         body{ font: 14px sans-serif; }
         .wrapper{ width: 350px; padding: 20px; }
     </style>
 </head>
 <body>
     <div class="wrapper">
-        <h2>User_ID</h2>
-        <p>Please fill in your credentials to User_ID.</p>
+        <h2>Login</h2>
+        <p>Please fill in your credentials to login.</p>
+
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($User_ID_err)) ? 'has-error' : ''; ?>">
-                <label>User_ID</label>
-                <input type="text" name="User_ID" class="form-control" value="<?php echo $User_ID; ?>">
-                <span class="help-block"><?php echo $User_ID_err; ?></span>
+            <div class="form-group">
+                <label>User ID</label>
+                <input type="text" name="User_ID" class="form-control <?php echo (!empty($User_ID_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $User_ID; ?>">
+                <span class="invalid-feedback"><?php echo $User_ID_err; ?></span>
             </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+            <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password" class="form-control">
-                <span class="help-block"><?php echo $password_err; ?></span>
+                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login">
             </div>
+            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
         </form>
-    </div>    
+    </div>
 </body>
 </html>

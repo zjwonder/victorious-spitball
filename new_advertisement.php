@@ -37,6 +37,7 @@
 					<tr><input type="submit" class="btn btn-primary" value="Login"></tr>
                 </table>
             </form>
+		</div>
 	</body>
 	
 </html>

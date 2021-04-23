@@ -7,6 +7,10 @@
         header("location: home.html");
         exit;
     }
+	elseif ($_SESSION['user_is_mod']) { 
+		header("location: mod_home.php");
+		exit;
+	}
 ?>
 
 <html>

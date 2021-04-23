@@ -1,43 +1,109 @@
 <!-- form validation from: https://www.w3schools.com/php/php_form_validation.asp
 	form syntax and functionality: https://github.com/alexasummers/CS371Demos/blob/main/new_employee.php
+	SQL script reference: https://github.com/alexasummers/CS371Demos/blob/main/add_employee.php
+	form field requirement: https://www.w3schools.com/php/php_form_required.asp
 -->
 
 <?php
 
-?>
-<html>
-	<head>
-		<title>Advertisements Manager Database</title>
-		<link rel="stylesheet" type="text/css" href="home.css">
-	</head>
-	
-	<body>
-		<div class="navigationBar">
-			<a href="home.html">Home</a>
-			<a href="employeeInformation.php">Employees</a>
-			<a href="home.html">Customers</a>
-			<a href="home.html">Accounts</a>
-			<a href="home.html">Transactions</a>
-		</div>
+	session_start();
+
+	if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === FALSE) {
+		header("location: home.html");
+		exit;
+	}
+
+	require_once 'connection.php';
+
+	$AdvTitleErr = $AdvPriceErr = $AdvDetailsErr = $AdvCatErr = "";
+
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		
-		<div style = "padding-left: 16px">
-			<h2>Create new ad listing</h2>
-			<form method="post" action="<?php echo htmlspecialchars(add_advertisement.php);?>">
-                <table>
-                    <tr><td>Ad Title: </td><td><input type="varchar(30)" name="AdvTitle"></td><tr>
-                    <tr><td>Price: </td><td><input type="varchar(30)" name="AdvPrice"></td><tr>
-                    <tr><td>Details: </td><td><textarea type="varchar(50)" name="AdvDetails"></td><tr>
-                    <tr><td>Category: </td>
-                        <td>
-                            <input type="radio" name="Category_ID" value="CAT">Cars and Trucks
-                            <input type="radio" name="Category_ID" value="HOU">Housing
-                            <input type="radio" name="Category_ID" value="ELC">Electronics
-                            <input type="radio" name="Category_ID" value="CCA">Child Care
-                        </td><tr>
-					<tr><input type="submit" class="btn btn-primary" value="Login"></tr>
-                </table>
-            </form>
-		</div>
-	</body>
-	
+		// make sure no fields are empty
+		if (empty($_POST["AdvTitle"])) { $AdvTitleErr = "Title is required"; } 
+
+		if (empty($_POST["AdvPrice"])) { $AdvPriceErr = "Price is required; enter '0' if free"; } 
+
+		if (empty($_POST["AdvDetails"])) { $AdvDetailsErr = "Details are required"; } 
+
+		if (empty($_POST["Category_ID"])) { $AdvCatErr = "You must choose a category"; } 
+
+		// make sure errors are cleared before contacting database
+		if (empty($AdvTitleErr) && empty($AdvPriceErr) && empty($AdvDetailsErr) && empty($AdvCatErr)) {
+			$AdvTitle=isset($_POST['AdvTitle'])?$_POST['AdvTitle']:"";
+			$AdvDetails=isset($_POST['AdvDetails'])?$_POST['AdvDetails']:"";
+			$AdvDate=date("Y-m-d");
+			$AdvPrice=isset($_POST['AdvPrice'])?$_POST['AdvPrice']:"";
+			$User_ID=isset($POST[$_SESSION["User_ID"]])?$POST[$_SESSION["User_ID"]]:"";
+			// mod ID added when it is reviewed by logged in moderator
+			$Category_ID=isset($_POST['Category_ID'])?$_POST['Category_ID']:"";
+			$Status_ID='PN';
+			$SQL = "INSERT INTO Advertisements(AdvTitle, AdvDetails, AdvDate, AdvPrice, User_ID, Category_ID, Status_ID) VALUES (";
+			$SQL.= "'".$AdvTitle."', '".$AdvDetails."', '".$AdvDate."', '".$AdvPrice."', '".$User_ID."', '".$Category_ID."', '".$Status_ID."')";
+			$result = mysqli_query($connection, $SQL);
+
+			if (!$result) { 
+				die ("Unable to connect: " . mysqli_error($connection)); 
+				sleep(5);
+				header("location: login_home.php");
+				exit;
+			}
+			else { header("Location: success.php"); }
+		}
+	}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Ad Submission</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="home.css"> -->
+	<style>
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 350px; padding: 20px; }
+    </style>
+</head>
+<body>
+	<div class="navigationBar">
+		<a href="login_home.php">Home</a>
+		<a href="active_ads.php">View Public Ads</a>
+		<a href="new_advertisement.php">Create Ad</a>
+		<a href="logout.php">Logout</a>
+	</div>	
+    <div class="wrapper">
+        <h2>Ad Submission</h2>
+        <p>Enter the details for your ad below.</p>
+
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="form-group">
+                <label>Ad Title</label>
+                <input type="text" name="AdvTitle" class="form-control <?php echo (!empty($AdvTitleErr)) ? 'is-invalid' : ''; ?>" value="<?php echo $AdvTitleErr; ?>">
+                <span class="invalid-feedback"><?php echo $AdvTitleErr; ?></span>
+            </div>    
+            <div class="form-group">
+                <label>Price</label>
+                <input type="text" name="AdvPrice" class="form-control <?php echo (!empty($AdvPriceErr)) ? 'is-invalid' : ''; ?>">
+                <span class="invalid-feedback"><?php echo $AdvPriceErr; ?></span>
+            </div>
+			<div class="form-group">
+                <label>Details</label>
+                <textarea rows="5" cols="50" name="AdvDetails" class="form-control <?php echo (!empty($AdvDetailsErr)) ? 'is-invalid' : ''; ?>"></textarea>
+                <span class="invalid-feedback"><?php echo $AdvDetailsErr; ?></span>
+            </div>
+			<div class="form-group">
+                <label>Category</label>
+                	<input type="radio" name="Category_ID" value="CAT">Cars and Trucks
+					<input type="radio" name="Category_ID" value="HOU">Housing
+					<input type="radio" name="Category_ID" value="ELC">Electronics
+					<input type="radio" name="Category_ID" value="CCA">Child Care
+                <span class="invalid-feedback"><?php echo $AdvCatErr; ?></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
+        </form>
+    </div>
+</body>
 </html>

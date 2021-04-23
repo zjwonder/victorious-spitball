@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS Moderators;
 CREATE TABLE IF NOT EXISTS Advertisements
  (Advertisement_ID smallint unsigned not null auto_increment,
  AdvTitle varchar(30) not null,
- AdvDetails varchar(50) not null,
+ AdvDetails varchar(255) not null,
  AdvDate date not null,
  AdvPrice decimal(7,2) unsigned not null,
  User_ID varchar(15) not null,

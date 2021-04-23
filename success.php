@@ -1,4 +1,18 @@
-<?php?>
+<?php
+
+session_start();
+
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === FALSE) {
+	header("location: home.html");
+	exit;
+}
+
+sleep(5);
+header("location: login_home.php");
+exit;
+
+?>
+
 <html>
 	<head>
 		<title>Advertisements Manager Database</title>
@@ -6,17 +20,11 @@
 	</head>
 	
 	<body>
-		<div class="navigationBar">
-			<a href="home.html">Home</a>
-			<a href="employeeInformation.php">Employees</a>
-			<a href="home.html">Customers</a>
-			<a href="home.html">Accounts</a>
-			<a href="home.html">Transactions</a>
-		</div>
 		
 		<div style = "padding-left: 16px">
 			<h2>Success!</h2>
-            <h3>Your changes were accepted into the database.</h3>
+            <h3>Your ad has been submitted and is pending mod approval.</h3>
+			<h4>Redirecting you momentarily...</h4>
 			
 	</body>
 	

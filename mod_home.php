@@ -18,7 +18,7 @@
 	<body>
 		<div class="navigationBar">
 			<a href="mod_home.php">Home</a>
-			<a href="active_ads.php">View Public Ads</a>
+			<a href="view_ads.php">View Public Ads</a>
 			<a href="new_advertisement.php">Create Ad</a>
 			<a href="manage_users.php">Manage Users</a>
 			<a href="manage_ads.php">Manage Ads</a>

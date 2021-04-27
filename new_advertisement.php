@@ -68,7 +68,7 @@
 <body>
 	<div class="navigationBar">
 		<a href="login_home.php">Home</a>
-		<a href="active_ads.php">View Public Ads</a>
+		<a href="view_ads.php">View Public Ads</a>
 		<a href="new_advertisement.php">Create Ad</a>
 		<a href="logout.php">Logout</a>
 	</div>	

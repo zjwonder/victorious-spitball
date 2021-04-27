@@ -136,7 +136,7 @@
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
                 <label>User ID</label>
-                <input type="text" name="User_ID" class="form-control <?php echo (!empty($User_ID_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $User_ID; ?>">
+                <input type="text" name="User_ID" class="form-control <?php echo (!empty($User_ID_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $User_ID;?>">
                 <span class="invalid-feedback"><?php echo $User_ID_err; ?></span>
             </div>    
             <div class="form-group">

@@ -1,6 +1,10 @@
 body {
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
+  background-image: url("https://www.lefthudson.com/wp-content/uploads/2019/11/gray-backgrounds-fresh-light-gray-background-c2b7e291a0-download-free-wallpapers-for-desktop-mobile-laptop-in-any-resolution-2019-of-gray-backgrounds.jpg");
+  background-size: cover;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
 }
 
 .navigationBar {
@@ -24,4 +28,25 @@ body {
 .navigationBar a:active {
 	background-color: navy;
 	color: white;
+}
+
+p {
+  border: 2px solid black;
+  margin: 10px;
+  width: 450px;
+  padding: 10px;
+  text-align: center;
+}
+
+/*
+.moveRight {
+  float: left;
+  padding-right:500px;
+  padding-left: 100px;
+  padding-top: 0px;
+
+}*/
+
+.centerThings {
+  padding-top: 20px;
 }

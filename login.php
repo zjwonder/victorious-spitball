@@ -118,10 +118,10 @@
 </head>
 <body>
 	<div class="navigationBar">
-		<a href="login_home.php">Home</a>
-		<a href="view_ads.php">View Public Ads</a>
-		<a href="new_advertisement.php">Create Ad</a>
-		<a href="logout.php">Logout</a>
+		<a href="home.html">Home</a>
+		<a href="view_ads.php">View Ads</a>
+		<a href="login.php">Login</a>
+		<a href="register.php">Register</a>
 	</div>	
     <div class="wrapper">
         <h2>Login</h2>

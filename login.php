@@ -69,27 +69,14 @@
 								$_SESSION["User_ID"] = $User_ID;
 								$_SESSION["user_is_mod"] = FALSE;
 								// check if user is also a moderator
-								$mod_SQL = "SELECT EXISTS (SELECT User_ID FROM Moderators WHERE User_ID = ?)";
-								if ($mod_stmt = mySQLi_prepare($connection, $mod_SQL)) {
-									mySQLi_stmt_bind_param($mod_stmt, "s", $param_User_ID);
-									// Set parameters
-									$param_User_ID = $User_ID;
-									// Attempt to execute the prepared statement
-									if (mySQLi_stmt_execute($mod_stmt)) { 
-										mySQLi_stmt_store_result($mod_stmt);
-										// Check if user is also a mod, update session as appropriate
-										if (mySQLi_stmt_fetch($mod_stmt) === 1) { 
-											$_SESSION["user_is_mod"] = TRUE; 
-											// Redirect user to welcome page
-											header("location: mod_home.php");
-										}
-										else { 
-											// Redirect user to welcome page
-											header("location: login_home.php");
-										}
-									}
-									mySQLi_stmt_close($mod_stmt);
-								}
+								$mod_SQL = "SELECT User_ID FROM Moderators WHERE User_ID = '$User_ID'";
+								$mod_result = $connection->query($mod_SQL);
+								if ($mod_result->num_rows === 1) { 
+									$_SESSION["user_is_mod"] = TRUE; 
+									// Redirect user to welcome page
+									header("location: mod_home.php");
+								} else { header("location: login_home.php"); }
+								 mySQLi_stmt_close($mod_stmt);
 							} 
 							else {
 								// Display an error message if password is not valid
@@ -122,13 +109,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="home.css">
+	<style>
         body{ font: 14px sans-serif; }
         .wrapper{ width: 350px; padding: 20px; }
     </style>
 </head>
 <body>
+	<div class="navigationBar">
+		<a href="login_home.php">Home</a>
+		<a href="view_ads.php">View Public Ads</a>
+		<a href="new_advertisement.php">Create Ad</a>
+		<a href="logout.php">Logout</a>
+	</div>	
     <div class="wrapper">
         <h2>Login</h2>
         <p>Please fill in your credentials to login.</p>

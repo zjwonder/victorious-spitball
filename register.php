@@ -92,8 +92,8 @@
 <head>
     <meta charset="UTF-8">
     <title>New User Registration</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="home.css"> -->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="home.css">
 	<style>
         body{ font: 14px sans-serif; }
         .wrapper{ width: 350px; padding: 20px; }

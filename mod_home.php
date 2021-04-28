@@ -8,6 +8,7 @@
 		header("location: login_home.php"); 
 		exit;
 	}
+	
 ?>
 
 <html>
@@ -20,7 +21,6 @@
 			<a href="mod_home.php">Home</a>
 			<a href="view_ads.php">View Public Ads</a>
 			<a href="new_advertisement.php">Create Ad</a>
-			<a href="manage_users.php">Manage Users</a>
 			<a href="manage_ads.php">Manage Ads</a>
 			<a href="logout.php">Logout</a>
 		</div>
@@ -29,6 +29,6 @@
 			<h4>Use the navigation bar above to access various pages.</h4>
 			<h4><u>Home</u> will take you... Home!</h4>
 			<h4><u>Create Ad</u> will take you to a login page so that you can create an ad!</h4>
-			<h4><u>View Ads</u> will take you to a page listing all ads! !WORK IN PROGRESS!</h4>
+			<h4><u>View Ads</u> will take you to a page listing all ads!</h4>
 	</body>
 </html>

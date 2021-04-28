@@ -1,3 +1,18 @@
+<?php
+    session_start();
+	
+	if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === TRUE)) {
+        header("location: home.html");
+        exit;
+    }
+	elseif ($_SESSION['user_is_mod']) { 
+		header("location: mod_home.php");
+		exit;
+	}
+?>
+
+
+
 <html>
 	<head>
 		<title>View Ads</title>
@@ -15,7 +30,7 @@
 			require_once 'connection.php';
 
 			// Querying the table
-			$sql_of_q1 = "SELECT * FROM Advertisements";
+			$sql_of_q1 = "SELECT * FROM Advertisements WHERE Status_ID='AC'";
 			$q1result = mysqli_query($connection, $sql_of_q1);
 		?>
 		<div style="margin-right: 100px">

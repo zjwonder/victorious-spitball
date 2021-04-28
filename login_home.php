@@ -3,7 +3,7 @@
 <?php
     session_start();
 	
-	if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === FALSE) {
+	if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === TRUE)) {
         header("location: home.html");
         exit;
     }

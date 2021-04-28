@@ -22,7 +22,9 @@
 		// make sure no fields are empty
 		if (empty($_POST["AdvTitle"])) { $AdvTitleErr = "Title is required"; } 
 
-		if (empty($_POST["AdvPrice"])) { $AdvPriceErr = "Price is required; enter '0' if free"; } 
+		if (empty($_POST["AdvPrice"])) { $AdvPriceErr = "Price is required; enter '0' if free"; }
+		elseif (!is_numeric($_POST["AdvPrice"])) { $AdvPriceErr = "Price must be numeric; enter '0' if free"; }
+		elseif ($_POST["AdvPrice"] > 100000) { $AdvPriceErr = "Price must be less than $100k"; }
 
 		if (empty($_POST["AdvDetails"])) { $AdvDetailsErr = "Details are required"; } 
 
@@ -58,8 +60,8 @@
 <head>
     <meta charset="UTF-8">
     <title>New Ad Submission</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="home.css"> -->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="home.css">
 	<style>
         body{ font: 14px sans-serif; }
         .wrapper{ width: 350px; padding: 20px; }
@@ -78,27 +80,34 @@
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
-                <label>Ad Title</label>
-                <input type="text" name="AdvTitle" class="form-control <?php echo (!empty($AdvTitleErr)) ? 'is-invalid' : ''; ?>" value="<?php echo $AdvTitleErr; ?>">
+                <label>Ad Title: </label>
+                <input type="text" maxlength="30" name="AdvTitle" class="form-control <?php echo (!empty($AdvTitleErr)) ? 'is-invalid' : ''; ?>" value="<?php echo $AdvTitleErr; ?>">
                 <span class="invalid-feedback"><?php echo $AdvTitleErr; ?></span>
             </div>    
             <div class="form-group">
-                <label>Price</label>
-                <input type="text" name="AdvPrice" class="form-control <?php echo (!empty($AdvPriceErr)) ? 'is-invalid' : ''; ?>">
+                <label>Price: $</label>
+                <input type="number" min="0" max="100000" name="AdvPrice" class="form-control <?php echo (!empty($AdvPriceErr)) ? 'is-invalid' : ''; ?>">
                 <span class="invalid-feedback"><?php echo $AdvPriceErr; ?></span>
             </div>
 			<div class="form-group">
-                <label>Details</label>
-                <textarea rows="5" cols="50" name="AdvDetails" class="form-control <?php echo (!empty($AdvDetailsErr)) ? 'is-invalid' : ''; ?>"></textarea>
-                <span class="invalid-feedback"><?php echo $AdvDetailsErr; ?></span>
+                <label>Category: </label>
+                	<!-- <input type="radio" name="Category_ID" value="CAT"> Cars and Trucks
+					<input type="radio" name="Category_ID" value="HOU"> Housing
+					<input type="radio" name="Category_ID" value="ELC"> Electronics
+					<input type="radio" name="Category_ID" value="CCA"> Child Care -->
+					<select name="input_status" id="input_status">
+					<option value=""></option>
+					<option value="CAT">Cars and Trucks</option>
+					<option value="ELC">Electronics</option>
+					<option value="HOU">Housing</option>
+					<option value="CCA">Child Care</option>
+				</select>
+                <span class="invalid-feedback"><?php echo $AdvCatErr; ?></span>
             </div>
 			<div class="form-group">
-                <label>Category</label>
-                	<input type="radio" name="Category_ID" value="CAT">Cars and Trucks
-					<input type="radio" name="Category_ID" value="HOU">Housing
-					<input type="radio" name="Category_ID" value="ELC">Electronics
-					<input type="radio" name="Category_ID" value="CCA">Child Care
-                <span class="invalid-feedback"><?php echo $AdvCatErr; ?></span>
+                <label>Details: </label>
+                <textarea maxlength="255" rows="5" cols="50" name="AdvDetails" class="form-control <?php echo (!empty($AdvDetailsErr)) ? 'is-invalid' : ''; ?>"></textarea>
+                <span class="invalid-feedback"><?php echo $AdvDetailsErr; ?></span>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">

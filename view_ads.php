@@ -1,14 +1,14 @@
 <?php
     session_start();
 	
-	if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === TRUE)) {
-        header("location: home.html");
-        exit;
-    }
-	elseif ($_SESSION['user_is_mod']) { 
-		header("location: mod_home.php");
-		exit;
-	}
+	// if (!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === TRUE)) {
+    //     header("location: home.html");
+    //     exit;
+    // }
+	// elseif ($_SESSION['user_is_mod']) { 
+	// 	header("location: mod_home.php");
+	// 	exit;
+	// }
 ?>
 
 

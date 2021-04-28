@@ -114,17 +114,17 @@
             <div class="form-group">
                 <label>First Name</label>
                 <input type="text" name="UserFirst" class="form-control <?php echo (!empty($UserFirst_err)) ? 'is-invalid' : ''; ?>">
-                <span class="invalid-feedback"><?php echo $$UserFirst_err; ?></span>
+                <span class="invalid-feedback"><?php echo $UserFirst_err; ?></span>
             </div> 
 			<div class="form-group">
                 <label>Last Name</label>
                 <input type="text" name="UserLast" class="form-control <?php echo (!empty($UserLast_err)) ? 'is-invalid' : ''; ?>" >
-                <span class="invalid-feedback"><?php echo $$UserLast_err; ?></span>
+                <span class="invalid-feedback"><?php echo $UserLast_err; ?></span>
             </div> 
 			<div class="form-group">
                 <label>Username</label>
                 <input type="text" name="User_ID" class="form-control <?php echo (!empty($User_ID_err)) ? 'is-invalid' : ''; ?>" >
-                <span class="invalid-feedback"><?php echo $$User_ID_err; ?></span>
+                <span class="invalid-feedback"><?php echo $User_ID_err; ?></span>
             </div> 
 			<div class="form-group">
                 <label>Password</label>

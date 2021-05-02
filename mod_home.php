@@ -25,10 +25,10 @@
 			<a href="logout.php">Logout</a>
 		</div>
 		<div style = "padding-left: 16px">
-			<h2>Welcome to your moderator homepage!</h2>
+			<h2>Welcome to your Moderator Homepage!</h2>
 			<h4>Use the navigation bar above to access various pages.</h4>
 			<h4><u>Home</u> will take you... Home!</h4>
 			<h4><u>Create Ad</u> will take you to a login page so that you can create an ad!</h4>
-			<h4><u>View Ads</u> will take you to a page listing all ads!</h4>
+			<h4><u>View Public Ads</u> will take you to a page listing all ads!</h4>
 	</body>
 </html>

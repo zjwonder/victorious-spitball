@@ -60,8 +60,8 @@ CREATE TABLE IF NOT EXISTS Categories
  insert into Users (User_ID, UserFirst, UserLast, password)
  values ('Jsmith','John','Smith', '$2y$10$O9AbWdnOOpeAFvGNFvULN.4.iK19JlWsxnaW2PypFcjSExmKaBKSm'),
         ('Ajackson','Ann','Jackson','$2y$10$TEI4jR4NBuqpwZsEYcvHH.5W58sU.po/ardZRnm3jcsDIW3w6jr3a'),
-        ('Rkale','Rania','Kale','$2y$10$TEI4jR4NBuqpwZsEYcvHH.5W58sU.po/ardZRnm3jcsDIW3w6jr3a'),
-        ('Sali','Samir','Ali','$2y$10$O9AbWdnOOpeAFvGNFvULN.4.iK19JlWsxnaW2PypFcjSExmKaBKSm');
+        ('Rkale','Rania','Kale','$2y$10$AeeSPhTuIgy55y6NyNkdoeoiK0GnJhgWuljWbN9aQLgBsHkjAOva6'),
+        ('Sali','Samir','Ali','$2y$10$eklCgpX45MxmUYgfJmjbvO.KAcEDOKjpHW7YQWOMTXFXJUdltSkjO');
 
  insert into Moderators(User_ID)
  values ('Jsmith'),('Ajackson');

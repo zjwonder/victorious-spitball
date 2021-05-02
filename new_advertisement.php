@@ -94,13 +94,13 @@
             </div>
 			<div class="form-group">
                 <label>Category: </label>
-					<select name="Category_ID">
-					<option value=""></option>
-					<option value="CAT">Cars and Trucks</option>
-					<option value="ELC">Electronics</option>
-					<option value="HOU">Housing</option>
-					<option value="CCA">Child Care</option>
-				</select>
+			<select name="Category_ID">
+				<option value=""></option>
+				<option value="CAT">Cars and Trucks</option>
+				<option value="ELC">Electronics</option>
+				<option value="HOU">Housing</option>
+				<option value="CCA">Child Care</option>
+			</select>
                 <span class="invalid-feedback"><?php echo $AdvCatErr; ?></span>
             </div>
 			<div class="form-group">

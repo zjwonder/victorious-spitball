@@ -91,11 +91,7 @@
             </div>
 			<div class="form-group">
                 <label>Category: </label>
-                	<!-- <input type="radio" name="Category_ID" value="CAT"> Cars and Trucks
-					<input type="radio" name="Category_ID" value="HOU"> Housing
-					<input type="radio" name="Category_ID" value="ELC"> Electronics
-					<input type="radio" name="Category_ID" value="CCA"> Child Care -->
-					<select name="input_status" id="input_status">
+					<select name="Category_ID">
 					<option value=""></option>
 					<option value="CAT">Cars and Trucks</option>
 					<option value="ELC">Electronics</option>

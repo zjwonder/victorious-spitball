@@ -59,15 +59,15 @@
 		<table border="1">
 			<?php
 				echo "<tr>";
-				echo "<td>".'Advertisement_ID'."</td>";
-				echo "<td>".'AdvTitle'."</td>";
-				echo "<td>".'AdvDetails'."</td>";
-				echo "<td>".'AdvDate'."</td>";
-				echo "<td>".'AdvPrice'."</td>";
-				echo "<td>".'Category_ID'."</td>";
-				echo "<td>".'User_ID'."</td>";
-				echo "<td>".'Moderator_ID'."</td>";
-				echo "<td>".'Status_ID'."</td>";
+				echo "<td>".'ID'."</td>";
+				echo "<td>".'Title'."</td>";
+				echo "<td>".'Details'."</td>";
+				echo "<td>".'Date'."</td>";
+				echo "<td>".'Price'."</td>";
+				echo "<td>".'Category'."</td>";
+				echo "<td>".'User'."</td>";
+				echo "<td>".'Moderator'."</td>";
+				echo "<td>".'Status'."</td>";
                 echo "<td></td>";
 				echo "</tr>";
 		

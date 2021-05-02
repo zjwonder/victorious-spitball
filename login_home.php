@@ -38,7 +38,7 @@
 			<h4>Use the navigation bar above to access various pages.</h4>
 			<h4><a href="login_home.php"><b>Home</b></a> will take you... Home!</h4>
 			<h4><a href="new_advertisement.php"><b>Create Ad</b></a> will take you to a login page so that you can create an ad!</h4>
-			<h4><a href="view_ads.php"><b>View Ads</b></a> will take you to a page listing all ads!</h4>
+			<h4><a href="view_ads.php"><b>View Public Ads</b></a> will take you to a page listing all ads!</h4>
     </center>
 
 

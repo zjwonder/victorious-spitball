@@ -50,7 +50,10 @@
 				header("location: login_home.php");
 				exit;
 			}
-			else { header("Location: success.php"); }
+			else { 
+				header("Location: success.php");
+				exit;
+			}
 		}
 	}
 ?>

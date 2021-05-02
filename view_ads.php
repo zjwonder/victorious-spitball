@@ -24,8 +24,25 @@
 			<a href="view_ads.php">View Ads</a>
 			<a href="login.php">Login</a>
 			<a href="register.php">Register</a>
-		</div>	
-		<div style = "padding-left: 16px">
+		</div>
+		
+		<img src="https://thumbs.gfycat.com/OffensiveOpulentGecko.webp" alt="Computer" width="200"
+           height="100">
+		   
+		<center>
+		<h2>
+		Welcome to <br>
+		VIEW ADS
+		</h2>
+		Please view various ads below!
+		<br>  
+		
+		<img src="https://thumbs.gfycat.com/BoringNeighboringDegu.webp" alt = "Tree" width="250"
+    height="250">	
+	
+		</center>
+		
+		<div style = "padding-left: 110px">
 		<?php
 			require_once 'connection.php';
 
@@ -34,18 +51,21 @@
 			$q1result = mysqli_query($connection, $sql_of_q1);
 		?>
 		<div style="margin-right: 100px">
-		<table border="1">
+		<table border="3">
+		
+		<caption><b><u>ADS</u></b></caption>
+		
 			<?php
 				echo "<tr>";
-				echo "<td>".'Advertisement_ID'."</td>";
-				echo "<td>".'AdvTitle'."</td>";
-				echo "<td>".'AdvDetails'."</td>";
-				echo "<td>".'AdvDate'."</td>";
-				echo "<td>".'AdvPrice'."</td>";
-				echo "<td>".'Category_ID'."</td>";
-				echo "<td>".'User_ID'."</td>";
-				echo "<td>".'Moderator_ID'."</td>";
-				echo "<td>".'Status_ID'."</td>";
+				echo "<td>".'ID'."</td>";
+				echo "<td>".'Title'."</td>";
+				echo "<td>".'Details'."</td>";
+				echo "<td>".'Date'."</td>";
+				echo "<td>".'Price'."</td>";
+				echo "<td>".'Category'."</td>";
+				echo "<td>".'User'."</td>";
+				echo "<td>".'Moderator'."</td>";
+				echo "<td>".'Status'."</td>";
 				echo "</tr>";
 		
 				while($r = mysqli_fetch_assoc($q1result)) {
